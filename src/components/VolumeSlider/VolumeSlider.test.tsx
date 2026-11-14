@@ -22,6 +22,13 @@ describe('VolumeSlider Component', () => {
     fireEvent.change(screen.getByRole('slider'), { target: { value: 70 } });
     expect(handleChange).toHaveBeenCalledWith(70);
   });
+  it('debe renderizar con el valor inicial de 80', () => {
+    render(<VolumeSlider label="Prueba" defaultValue={80} />);
+
+    const slider = screen.getByRole('slider');
+
+    expect(slider).toHaveAttribute('aria-valuenow', '80');
+  });
 
   it('debe mostrar el texto del label correctamente', () => {
     render(<VolumeSlider label="Volumen" />);
